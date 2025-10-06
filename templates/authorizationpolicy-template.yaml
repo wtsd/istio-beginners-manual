@@ -1,0 +1,16 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: <policy-name>
+  namespace: <namespace>
+spec:
+  selector:
+    matchLabels:
+      app: <target-app>
+  rules:
+    - from:
+        - source:
+            namespaces: ["<allowed-namespace>"]
+      to:
+        - operation:
+            methods: ["GET", "POST"]
